@@ -1,5 +1,5 @@
 # pgsqlupdate
-###Upgrade PostgeSQL database server from 9.3 to 9.6 on CentOS 6.x for odoo 8
+###Upgrade PostgreSQL database server from 9.3 to 9.6 on CentOS 6.x for odoo 8
 
 ####Install new version of PostgreSQL
 First we will install the PostgreSQL version 9.6. We use the repository rather than simply downloading an RPM because it’s easier to keep up to date with important security and maintenance updates. This command will add the PostgreSQL repository to your server:
@@ -24,7 +24,7 @@ yum -y install postgresql96 postgresql96-server postgresql96-devel postgresql96-
 service postgresql-9.6 initdb
 ```
 
-Next we need to configure PostgreSQL so it will accept connections using MD5 hashed passwords so it’s compatible with the Python modules:
+Next we need to configure PostgreSQL so it will accept connections using MD5 hashed passwords so it’s compatible with the Python modules of odoo:
 
 ```
 sed -i "/^host/s/ident/md5/g" /var/lib/pgsql/9.6/data/pg_hba.conf
