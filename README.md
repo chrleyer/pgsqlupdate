@@ -52,7 +52,7 @@ exit
 
 Now start the new 9.6 service
 
-This must be done as root, better user new shell window.
+This must be done as root, better use new shell window.
 
 ```
 service postgresql-9.6 start
