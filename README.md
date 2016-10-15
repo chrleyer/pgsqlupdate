@@ -40,13 +40,14 @@ chkconfig --level 35 postgresql-9.3 off
 The pg_upgrade command must be run as postgres user:
 
 ```
-sudo postgres
+su - postgres
 ```
 
 Use pg_update to move data from old 9.x to 9.6 version:
 
 ```
 /usr/pgsql-9.6/bin/pg_upgrade -b /usr/pgsql-9.3/bin/ -B /usr/pgsql-9.6/bin/ -d /var/lib/pgsql/9.3/data/ -D /var/lib/pgsql/9.6/data/
+exit
 ```
 
 Now start the new 9.6 service
@@ -60,8 +61,10 @@ chkconfig --level 35 postgresql-9.6 on
 Cleanup database (run as user postgres)
 
 ```
+su - postgres
 ./analyze_new_cluster.sh
 ./delete_old_cluster.sh
+exit
 ```
 
 Now we need to edit the PATH in /etc/profile
